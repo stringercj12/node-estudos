@@ -35,7 +35,7 @@ docker run \
 
 docker run \
     --name mongoclient \
-    -p 4000:4000 \
+    -p 3000:3000 \
     --link mongodb:mongodb \
     -d \
     mongoclient/mongoclient

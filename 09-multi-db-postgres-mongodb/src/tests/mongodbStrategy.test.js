@@ -23,7 +23,6 @@ let MOCK_HEROI_ID = "";
 
 
 describe('MongoDB Strategy', function () {
-    this.timeout(Infinity)
     this.beforeAll(async () => {
         await context.connect()
         // await context.delete()
@@ -60,13 +59,15 @@ describe('MongoDB Strategy', function () {
         const result = await context.update(MOCK_HEROI_ID, {
             nome: 'Pernalonga'
         })
+        console.log('result => ', result)
 
-        assert.deepEqual(result.nModified, 1)
+        assert.deepEqual(result.modifiedCount, 1)
     })
 
-    it('Remover por id', async () => {
+    it('Remover', async () => {
         const result = await context.delete(MOCK_HEROI_ID)
-
-        assert.deepEqual(result.n, 1)
+        console.log('result => ', result)
+        console.log('MOCK_HEROI_ID => ', MOCK_HEROI_ID)
+        assert.deepEqual(result.deletedCount, 1)
     })
 })
